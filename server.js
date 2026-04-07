@@ -3,9 +3,12 @@
  * Use: npm run dev
  * Then open http://localhost:5173 — /api/chat and /api/audio will work.
  */
-import 'dotenv/config';
+import { config as dotenvConfig } from 'dotenv';
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
+
+dotenvConfig();
+dotenvConfig({ path: 'api/.env', override: false });
 
 const apiKey = process.env.OPENAI_API_KEY || process.env.VITE_OPENAI_KEY;
 const isPlaceholder = !apiKey || /^sk-your[-_]?(key[-_]?)?here$/i.test(apiKey) || apiKey.includes('your-key-here') || apiKey.includes('your_openai');

@@ -1,4 +1,8 @@
 import OpenAI from 'openai';
+import { config as dotenvConfig } from 'dotenv';
+
+dotenvConfig();
+dotenvConfig({ path: 'api/.env', override: false });
 
 export default async function handler(req, res) {
   // Set CORS headers
